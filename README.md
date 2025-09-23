@@ -3,10 +3,15 @@
 This project provides end-to-end financial transaction analysis, combining SQL, Python, and Power BI for insights into inflows, outflows, credit, debit, and customer balances. It also includes fraud detection insights and visual dashboards.
 
 📂 Project Structure
+
 ├── finance.csv          # Raw dataset of transactions (Amount, Date, Merchant, CustomerID, etc.)
+
 ├── finance.ipynb        # Jupyter Notebook for data analysis & visualization in Python
+
 ├── finance.sql          # SQL scripts for data exploration & aggregations
-├── Screenshot (90).png  # Power BI dashboard screenshot
+
+├── finance.pbix         # Power BI dashboard 
+
 └── README.md            # Project documentation
 
 🗂 Dataset
