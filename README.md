@@ -74,8 +74,6 @@ Visualizations using Matplotlib / Seaborn / Plotly
 
 📈 Power BI Dashboard
 
-File: Screenshot (90).png
-
 The Power BI dashboard integrates the processed data to provide:
 
 Customer Balance (7-Day Rolling Average)
@@ -110,16 +108,6 @@ Open Power BI Desktop
 Load finance.csv
 
 Reproduce visuals or view existing dashboard (Screenshot (90).png)
-
-📌 Future Improvements
-
-Implement machine learning models for fraud detection.
-
-Automate ETL pipeline (SQL → Python → Power BI).
-
-Deploy interactive dashboards on Power BI Service or Streamlit.
-
-📷 Dashboard Preview
 
 ⚡ Author: Sahil gaikwad
 📅 Date: September 2025
