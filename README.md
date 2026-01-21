@@ -5,7 +5,6 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
 [![SQL](https://img.shields.io/badge/SQL-MySQL%2FPostgreSQL-orange.svg)](#)
-[![Streamlit](https://img.shields.io/badge/Streamlit-App-red.svg)](#)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow.svg)](#)
 
 ## 📋 Overview
@@ -18,7 +17,6 @@ This project delivers an **end-to-end financial transaction analysis system** co
 - **Fraud Detection** - Automated identification of suspicious transactions
 - **Cash Flow Analytics** - Inflow/outflow tracking and net position analysis
 - **Customer Financial Health** - Running balance calculations and trend analysis
-- **Streamlit Web App** - Interactive ML-powered predictive analytics
 
 ## 🗂️ Project Structure
 
@@ -27,8 +25,7 @@ This project delivers an **end-to-end financial transaction analysis system** co
 ├── finance.csv                          # Raw transaction dataset
 ├── finance.ipynb                        # Jupyter notebook with Python analysis & EDA
 ├── finance.sql                          # SQL queries for data exploration & KPIs
-├── Finance Dashboard.pbix              # Power BI dashboard (4 pages)
-├── app.py                              # Streamlit web application
+├── Finance Dashboard.pbix              # Power BI dashboard (main page with 5 visualizations)
 └── README.md                           # Project documentation
 ```
 
@@ -66,7 +63,7 @@ The dataset contains **transaction-level financial data** with comprehensive att
 - Average transaction value by customer
 
 ### 3. **Fraud Detection System**
-- Suspicious transaction flagging
+- Suspicious transaction flagging (23 alerts in current dataset)
 - Unusual merchant activity alerts
 - High-value transaction monitoring
 - Velocity checks (frequent transactions in short timeframe)
@@ -150,71 +147,71 @@ FROM finance;
 
 ### Required Libraries
 ```bash
-pip install pandas numpy matplotlib seaborn plotly scikit-learn jupyter streamlit
+pip install pandas numpy matplotlib seaborn plotly scikit-learn jupyter
 ```
 
 ## 📈 Power BI Dashboard (`Finance Dashboard.pbix`)
 
-### Dashboard Pages
+### Dashboard Overview - Main Page: Transaction Insights
 
-**Page 1: Executive Summary**
-- Key Performance Indicators (KPIs)
-- Total Credits, Total Debits, Net Cash Flow
-- Average Transaction Value
-- Total Customer Count
-- Monthly transaction trends
+**Executive KPI Cards**
+- **2,084** Total Transactions (all recorded transactions)
+- **5.36M** Total Credit (total inflows/deposits)
+- **5.20M** Total Debit (total outflows/withdrawals)
+- **156.61K** Net Cash Flow (Credits - Debits)
+- **23** Suspicious Transactions (Fraud Alerts flagged)
 
-**Page 2: Cash Flow Analysis**
-- Monthly Credit vs Debit comparison (column chart)
-- Cumulative cash flow over time (line chart)
-- Cash flow by category (pie chart)
-- Daily transaction volume trends
+### Main Dashboard Visualizations
 
-**Page 3: Customer Health**
-- 7-day rolling average balance (line chart)
-- Top 10 customers by account balance
-- Customer balance distribution (histogram)
-- Spending pattern analysis by customer segment
+**1. Customer Balance (7-Day Rolling Average)**
+- Line chart showing customer account balance trends over time
+- Displays balance smoothing over 7-day rolling window
+- Helps identify account health and volatility patterns
+- X-axis: Time period | Y-axis: Balance amount
 
-**Page 4: Fraud & Risk Analysis**
-- Suspicious transactions table
-- High-risk merchants list
-- Unusual activity alerts
-- Fraud score distribution
-- Risk indicator heatmap
+**2. Customer Net Cash Flow**
+- Horizontal bar chart ranking customers by net cash position
+- Shows individual customer cash flow status (positive/negative)
+- Sorted by cash flow value for easy identification
+- Top customers ranked by cash flow contribution
 
-### Interactive Features
-- Slicers for Date, Customer, Merchant, Category
-- Drill-down capabilities on all charts
-- Hover tooltips with detailed metrics
-- Dynamic filtering across all visuals
-- KPI cards with variance indicators
+**3. Suspicious Transactions Table**
+- Transaction-level fraud detection table
+- Columns: TransactionDate, TransactionID, CustomerID, Amount, Merchant, Balance, Suspicious Transaction (Yes/No)
+- Red dot indicators (●) for flagged suspicious transactions
+- Sortable and filterable by date, merchant, amount, and status
+- Sample flagged merchants: Uber, Walmart, Apple Store
 
-## 🚀 Streamlit Web Application (`app.py`)
+**4. Monthly Credit vs Debit**
+- Stacked column chart comparing inflows and outflows
+- Orange bars = Credits | Blue bars = Debits
+- Monthly breakdown across complete date range
+- Shows seasonal cash flow patterns
+- Values range from ~$95K to $461K per month
 
-Interactive web application featuring:
+**5. Monthly Cash Flow (Inflow vs Outflow)**
+- Dual-axis line chart showing inflow/outflow trends
+- Green line = Monthly Inflow (Credits)
+- Red line = Monthly Outflow (Debits)
+- Time period: 2018-2023 (multi-year analysis)
+- Helps identify peak and low cash flow periods
+- Approximately ±$400K-500K range
 
-### Features
-- **Dashboard Overview** - Key metrics and visualizations
-- **Customer Analytics** - Individual customer financial profiles
-- **Fraud Detection** - Real-time suspicious transaction alerts
-- **Merchant Analysis** - Merchant performance and risk metrics
-- **Predictive Models** - ML models for cash flow forecasting and fraud probability
-- **Transaction Search** - Advanced filtering and search capabilities
-- **Report Generation** - PDF export of custom reports
+### Interactive Filters & Controls
+- **Date Filter**: Custom date range selection (01-01-2018 to 15-09-2023)
+- **Amount Range Filter**: Filter transactions by amount thresholds ($5.52 - $9,999.36)
+- **Merchant Filter**: Filter by specific merchant names (All option with dropdown)
+- **CustomerID Filter**: Search and filter by individual customers
+- **Real-time Updates**: All visualizations update dynamically based on filter selections
 
-### How to Run
-```bash
-# Install Streamlit
-pip install streamlit
+### Key Features
+- Responsive layout for all screen sizes
+- Tooltip hover details on all charts
+- Drilldown capabilities for deeper analysis
+- Professional color scheme (blue/orange for credits/debits)
+- Performance-optimized for 5M+ transaction datasets
 
-# Run the app
-streamlit run app.py
-
-# App will be available at http://localhost:8501
-```
-
-## 🛠️ How to Use
+## 🚀 How to Use
 
 ### Option 1: SQL Analysis
 ```sql
@@ -246,43 +243,32 @@ jupyter notebook finance.ipynb
 ```
 1. Open Finance Dashboard.pbix in Power BI Desktop
 2. Click "Transform Data" to refresh CSV connection
-3. Navigate through dashboard pages
-4. Use slicers to filter by date, customer, merchant
+3. View Transaction Insights main page
+4. Use filters to analyze by date, customer, merchant
 5. Export reports as needed
-```
-
-### Option 4: Streamlit Web App
-```bash
-# Install Streamlit
-pip install streamlit pandas numpy scikit-learn plotly
-
-# Run the app
-streamlit run app.py
-
-# Open browser to http://localhost:8501
 ```
 
 ## 💡 Key Insights & Metrics
 
 ### Financial Metrics
-- **Total Transactions**: Aggregate transaction count
-- **Total Credits**: Sum of all inflows
-- **Total Debits**: Sum of all outflows
-- **Net Cash Flow**: Credits minus Debits
-- **Average Transaction**: Mean transaction value
-- **Balance Range**: Min to Max account balance
+- **Total Transactions**: 2,084 transactions
+- **Total Credits**: $5.36M (inflows)
+- **Total Debits**: $5.20M (outflows)
+- **Net Cash Flow**: $156.61K (positive)
+- **Average Transaction**: ~$2,478
+- **Balance Range**: Min to Max account balance across customers
 
 ### Behavioral Insights
 - Peak transaction hours and days
-- Top spending categories
+- Top spending categories and merchants
 - High-value customer segments
 - Merchant concentration risk
 - Transaction frequency patterns
 
 ### Risk Indicators
-- Fraud transaction percentage
-- Suspicious merchant count
-- High-risk customer segments
+- **Fraud Alerts**: 23 suspicious transactions flagged
+- Fraud detection rate: Automated anomaly detection
+- High-risk merchant identification
 - Unusual transaction patterns
 - Balance volatility scores
 
@@ -290,11 +276,10 @@ streamlit run app.py
 
 | File | Size | Description |
 |------|------|-------------|
-| `finance.csv` | ~500 KB | Raw transaction dataset |
+| `finance.csv` | ~500 KB | Raw transaction dataset (2,084 records) |
 | `finance.ipynb` | ~2 MB | Jupyter notebook with Python analysis |
 | `finance.sql` | ~20 KB | 12+ SQL queries for analytics |
 | `Finance Dashboard.pbix` | ~3 MB | Interactive Power BI dashboard |
-| `app.py` | ~50 KB | Streamlit web application |
 | `README.md` | This file | Complete project documentation |
 
 ## 🛠️ Technologies & Tools
@@ -303,10 +288,10 @@ streamlit run app.py
 |----------|---------------|
 | **Data Processing** | Python (Pandas, NumPy) |
 | **Visualization** | Matplotlib, Seaborn, Plotly, Power BI |
-| **Web Framework** | Streamlit |
 | **Database** | SQL (MySQL, PostgreSQL, SQLite) |
 | **Machine Learning** | Scikit-learn (anomaly detection, classification) |
 | **Analysis** | Jupyter Notebook |
+| **BI/Reporting** | Microsoft Power BI |
 | **Data Format** | CSV, XLSX |
 
 ## 🎯 Use Cases
@@ -329,16 +314,6 @@ streamlit run app.py
 - [ ] Advanced customer segmentation (RFM analysis)
 - [ ] Automated report generation and scheduling
 - [ ] Machine learning for spending pattern prediction
-- [ ] Integration with blockchain for transaction verification
-- [ ] Natural language processing for transaction classification
-
-## 📊 Performance Metrics
-
-- **Data Processing**: Sub-second query response times
-- **Dashboard Refresh**: Real-time data updates
-- **Fraud Detection**: 95%+ accuracy on test data
-- **Storage**: ~500 MB for 100K transactions
-- **Scalability**: Optimized for 1M+ transactions
 
 ## 📝 License
 
@@ -354,7 +329,7 @@ MIT License - Feel free to use this project for personal and commercial purposes
 ## 🙏 Acknowledgments
 
 - Dataset: Financial Transaction Data
-- Tools: Python, SQL, Power BI, Streamlit
+- Tools: Python, SQL, Power BI
 - Inspiration: FinTech best practices and financial analytics standards
 
 ## ⭐ Show Your Support
@@ -363,4 +338,4 @@ If this project helped you with financial analytics or fraud detection, please c
 
 ---
 
-**Last Updated**: January 2026 | **Version**: 2.0 | **Status**: Active Development
+**Last Updated**: January 2026 | **Version**: 3.0 | **Status**: Active Development
