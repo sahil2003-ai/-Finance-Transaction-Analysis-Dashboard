@@ -47,10 +47,11 @@ Financial transaction data needs consistent definitions and validation before to
 
 ## 📂 Dataset
 
-finance.csv is included. Confirm row count, column definitions, source, and any privacy constraints from the actual file.
+The saved notebook confirms **50,000 rows × 7 columns** in `finance.csv`. Its saved `df.info()` and missing-value output report 50,000 non-null values per column and zero missing values.
 
-- **Privacy and licensing:** Check source terms and avoid publishing personal, sensitive, or restricted data.
-- **Preprocessing:** Follow the actual SQL/notebook/report implementation; do not assume cleaning steps or row counts that have not been verified.
+- **Fields:** `TransactionID`, `CustomerID`, `TransactionDate`, `Amount`, `TransactionType`, `Merchant`, and `Balance`.
+- **Source/license:** Document the original dataset source and usage terms.
+- **Privacy:** Avoid publishing customer identifiers or sensitive transaction-level records.
 
 ## 🛠️ Tech Stack
 
@@ -103,13 +104,19 @@ Run the SQL queries and notebook after configuring data paths/database; open the
 
 ## 📊 Results and Insights
 
-### Key Findings
+### Verified dataset checks from saved notebook output
 
-Add reproducible totals and insights only after reconciling SQL, notebook, and dashboard outputs.
+| Check | Recorded result |
+|---|---:|
+| Rows | 50,000 |
+| Columns | 7 |
+| Missing values | 0 across all seven columns |
 
-### Evaluation
+### SQL analysis available
 
-For analytics projects, reconcile key totals and document metric definitions. For ML projects, report the baseline, split strategy, relevant metrics, and held-out evaluation results. Do not include unverified scores or business impact claims.
+The SQL file defines queries for total rows, total transaction amount, credit/debit totals, average transaction amount by type, top merchants, top customers, and monthly totals.
+
+The SQL file does not contain saved result values, so total amount and merchant rankings are not reported as verified findings. Execute the queries against the current CSV and validate date parsing and amount semantics before adding figures.
 
 ## 🖼️ Screenshots
 
@@ -124,9 +131,10 @@ No image files were confirmed for this repository during this update. If you hav
 
 ## ⚠️ Limitations
 
-- A suspicious-transaction flag is not proof of fraud.
-- Do not expose account identifiers or sensitive transaction data.
-- No screenshot files were found in the repository.
+- Row count and missing-value results come from saved notebook output; rerun to confirm the current CSV.
+- Financial aggregate values were not saved in the SQL file.
+- Confirm whether `Balance` is transaction-level or post-transaction balance before interpreting it.
+- An unusual-transaction flag is not proof of fraud.
 
 ## 🚀 Future Improvements
 
