@@ -1,45 +1,26 @@
 # Finance Transaction Analysis Dashboard
 
-An analytics portfolio project combining SQL, Python, and Power BI to explore transaction flows, cash movement, balance trends, and potential anomalies in financial transaction data.
+A project combining SQL, Python, and Power BI to explore transaction activity, cash movement, customer/merchant patterns, and potential anomalies.
 
-## Project Overview
-The project is designed to help users inspect transaction activity and summarize financial patterns through query-based analysis and dashboard reporting.
+## Step-by-step workflow
 
-## Analytical Areas
-- Credits, debits, and net cash movement
-- Transaction trends over time, including rolling averages where implemented
-- Customer and merchant-level summaries
-- Balance movement and transaction-status analysis
-- Potentially suspicious transactions, subject to a clearly documented rule or model
-
-**Important:** A flagged transaction is not proof of fraud. Any anomaly or fraud-related claim should include the detection rule, evaluation method, and limitations.
+1. **Inspect the files** — review `finance.csv`, `finance.ipynb`, `finance.sql`, and `Finance Dashboard.pbix`.
+2. **Understand the schema** — check transaction ID, date, customer, merchant, amount, transaction type, and balance/status fields.
+3. **Validate data quality** — inspect data types, missing values, duplicate transaction IDs, negative amounts, and date coverage.
+4. **Run SQL analysis** — calculate transaction counts, credits/debits, net movement, and customer/merchant summaries supported by the SQL file.
+5. **Explore in Python** — follow the notebook's cleaning and EDA steps and reconcile key totals with SQL.
+6. **Review Power BI** — open the PBIX, confirm its data source, and inspect filters, KPIs, and rolling calculations.
+7. **Investigate anomalies carefully** — document the exact rule used to flag unusual activity and check false positives.
+8. **Report findings** — add verified insights, definitions, and practical follow-up questions.
 
 ## Tools
-- SQL (document the exact database dialect)
-- Python and Jupyter Notebook
-- Power BI
+SQL, Python, pandas, Jupyter Notebook, Power BI.
 
-## Repository Contents
-The current README documents these main files:
-- `finance.csv` — transaction dataset
-- `finance.ipynb` — Python analysis and EDA
-- `finance.sql` — SQL queries and KPIs
-- `Finance Dashboard.pbix` — Power BI report
+## Screenshots
+No separate image files were found in the repository root. Add dashboard screenshots in `images/` and embed them here.
 
-## How to Review
-1. Inspect the CSV columns and data types.
-2. Review the notebook for cleaning, calculations, and validation.
-3. Run the SQL queries in the documented database environment.
-4. Open the Power BI file and verify its data source and measures.
+## Safety and interpretation
+A suspicious-transaction flag is not proof of fraud. Do not publish sensitive financial identifiers.
 
-## Skills Demonstrated
-Transaction analytics, SQL, data cleaning, financial KPI design, rolling-window analysis, dashboarding, and communicating data limitations.
-
-## Recommended Improvements
-- Add a data dictionary and dataset provenance.
-- Define the transaction balance and net-position calculations.
-- Document any anomaly detection logic and its false-positive limitations.
-- Add dashboard screenshots and verified findings.
-- Never publish real account identifiers or sensitive financial information.
-
-> This is an analytics project, not a financial auditing or fraud-certification system.
+## Next improvements
+Add dataset provenance, setup instructions, KPI definitions, screenshots, and reproducible findings.
